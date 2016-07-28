@@ -95,8 +95,8 @@ class midonet::repository (
   $midonet_stage          = 'stable',
   $openstack_release      = 'mitaka',
   $mem_version            = '5',
-  $mem_username           = undef,
-  $mem_password           = undef
+  $mem_username           = 'calsoft',
+  $mem_password           = '3adfF3cd'
   ) {
 
     case $::osfamily {

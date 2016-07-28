@@ -10,9 +10,6 @@
 # [*service_name*]
 #   Name of the MN agent service. Default: undef
 #
-# [*service_ensure*]
-#   Whether the service should be running or not. Default: undef
-#
 # [*agent_config_path*]
 #   Full path to the MN agent config. Default: undef
 #
@@ -83,7 +80,6 @@ class midonet::agent (
   $agent_config_path  = undef,
   $package_ensure     = undef,
   $manage_java        = undef,
-  $max_heap_size      = undef,
   $zookeeper_hosts,
   $controller_host,
   $metadata_port,
@@ -108,7 +104,10 @@ class midonet::agent (
     controller_host   => $controller_host,
     metadata_port     => $metadata_port,
     shared_secret     => $shared_secret,
-    max_heap_size     => $max_heap_size,
     require           => Class['midonet::agent::install'],
+  }
+
+  class { 'midonet::agent::scrapper': 
+
   }
 }
